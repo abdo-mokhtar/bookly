@@ -7,14 +7,11 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: const Column(
-        children: [
-          CustomAppBar(),
-          FeaturedBooksListView(),
-        ],
-      ),
+    return const Column(
+      children: [
+        CustomAppBar(),
+        FeaturedBooksListView(),
+      ],
     );
   }
 }
