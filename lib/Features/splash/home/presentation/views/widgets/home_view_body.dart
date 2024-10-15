@@ -1,5 +1,6 @@
 import 'package:book/Features/splash/home/presentation/views/widgets/custom_app_bar.dart';
 import 'package:book/Features/splash/home/presentation/views/widgets/featured_list_view.dart';
+import 'package:book/constans.dart';
 import 'package:book/core/styles.dart';
 import 'package:flutter/material.dart';
 
@@ -20,10 +21,10 @@ class HomeViewBody extends StatelessWidget {
           ),
           Text(
             'Best Saller',
-            style: Styles.titleMedium,
+            style: Styles.TextStyle18,
           ),
           SizedBox(
-            height: 22,
+            height: 15,
           ),
           BestSellarListViewItem(),
         ],
