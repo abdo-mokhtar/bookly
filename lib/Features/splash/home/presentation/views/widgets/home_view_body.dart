@@ -21,6 +21,40 @@ class HomeViewBody extends StatelessWidget {
           Text(
             'Best Saller',
             style: Styles.titleMedium,
+          ),
+          SizedBox(
+            height: 22,
+          ),
+          BestSellarListViewItem(),
+        ],
+      ),
+    );
+  }
+}
+
+class BestSellarListViewItem extends StatelessWidget {
+  const BestSellarListViewItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 190,
+      child: Row(
+        children: [
+          AspectRatio(
+            aspectRatio: 2.5 / 4,
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: Colors.white,
+                image: const DecorationImage(
+                  fit: BoxFit.fill,
+                  image: AssetImage(
+                    'assets/images/test_image.png',
+                  ),
+                ),
+              ),
+            ),
           )
         ],
       ),

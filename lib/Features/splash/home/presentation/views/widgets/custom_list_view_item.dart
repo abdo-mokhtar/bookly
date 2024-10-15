@@ -10,11 +10,12 @@ class FeaturedListViewItem extends StatelessWidget {
       child: AspectRatio(
         aspectRatio: 2.5 / 4,
         child: Container(
-          height: 100,
-          width: 50,
-          decoration: const BoxDecoration(
+          // height: 100,
+          // width: 50,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
             color: Colors.white,
-            image: DecorationImage(
+            image: const DecorationImage(
               fit: BoxFit.fill,
               image: AssetImage('assets/images/test_image.png'),
             ),
