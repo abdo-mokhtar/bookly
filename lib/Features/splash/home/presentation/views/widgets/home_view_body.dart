@@ -1,3 +1,4 @@
+import 'package:book/Features/splash/home/presentation/views/widgets/best_sellar_list_view_item.dart';
 import 'package:book/Features/splash/home/presentation/views/widgets/custom_app_bar.dart';
 import 'package:book/Features/splash/home/presentation/views/widgets/featured_list_view.dart';
 import 'package:book/core/styles.dart';
@@ -9,7 +10,7 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.0),
+      padding: EdgeInsets.symmetric(horizontal: 30.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -23,39 +24,9 @@ class HomeViewBody extends StatelessWidget {
             style: Styles.TextStyle18,
           ),
           SizedBox(
-            height: 15,
+            height: 20,
           ),
           BestSellarListViewItem(),
-        ],
-      ),
-    );
-  }
-}
-
-class BestSellarListViewItem extends StatelessWidget {
-  const BestSellarListViewItem({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 190,
-      child: Row(
-        children: [
-          AspectRatio(
-            aspectRatio: 2.5 / 4,
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: Colors.white,
-                image: const DecorationImage(
-                  fit: BoxFit.fill,
-                  image: AssetImage(
-                    'assets/images/test_image.png',
-                  ),
-                ),
-              ),
-            ),
-          )
         ],
       ),
     );
