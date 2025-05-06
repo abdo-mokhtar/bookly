@@ -1,39 +1,51 @@
-import 'package:book/Features/splash/home/presentation/views/home_view.dart';
-import 'package:book/Features/splash/presentation/views/widgets/sliding_text.dart';
-import 'package:book/constans.dart';
+import 'package:bookly/core/utils/app_router.dart';
+import 'package:bookly/core/utils/assets.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_core/get_core.dart';
-import 'package:get/get_navigation/get_navigation.dart';
+import 'package:go_router/go_router.dart';
 
-class SplashViewBody extends StatefulWidget {
-  const SplashViewBody({super.key});
+import 'sliding_text.dart';
+
+class SplashViewbody extends StatefulWidget {
+  const SplashViewbody({Key? key}) : super(key: key);
 
   @override
-  State<SplashViewBody> createState() => _SplashViewBodyState();
+  State<SplashViewbody> createState() => _SplashViewbodyState();
 }
 
-class _SplashViewBodyState extends State<SplashViewBody>
+class _SplashViewbodyState extends State<SplashViewbody>
     with SingleTickerProviderStateMixin {
   late AnimationController animationController;
   late Animation<Offset> slidingAnimation;
-  @override
-  void dispose() {
-    super.dispose();
-    animationController.dispose();
-  }
 
   @override
   void initState() {
     super.initState();
     initSlidingAnimation();
+
     navigateToHome();
   }
 
-  void navigateToHome() {
-    Future.delayed(const Duration(seconds: 3), () {
-      Get.to(() => const HomeView(),
-          transition: Transition.fade, duration: KTranstionDuration);
-    });
+  @override
+  void dispose() {
+    super.dispose();
+
+    animationController.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Image.asset(AssetsData.logo),
+        const SizedBox(
+          height: 4,
+        ),
+        SlidingText(slidingAnimation: slidingAnimation),
+      ],
+    );
   }
 
   void initSlidingAnimation() {
@@ -41,23 +53,25 @@ class _SplashViewBodyState extends State<SplashViewBody>
       vsync: this,
       duration: const Duration(seconds: 1),
     );
+
     slidingAnimation =
-        Tween<Offset>(begin: const Offset(0, 13), end: Offset.zero)
+        Tween<Offset>(begin: const Offset(0, 2), end: Offset.zero)
             .animate(animationController);
+
     animationController.forward();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      // crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Center(
-          child: Image.asset('assets/images/Logo.png'),
-        ),
-        SlidingText(slidingAnimation: slidingAnimation)
-      ],
+  void navigateToHome() {
+    Future.delayed(
+      const Duration(seconds: 2),
+      () {
+        // Get.to(() => const HomeView(),
+        //     // calculations
+        //     transition: Transition.fade,
+        //     duration: kTranstionDuration);
+
+        GoRouter.of(context).push(AppRouter.kHomeView);
+      },
     );
   }
 }
